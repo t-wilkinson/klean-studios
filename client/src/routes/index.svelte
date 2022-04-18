@@ -5,7 +5,7 @@
 	export const load: Load = async ({ params, fetch, session, stuff, ...props }) => {
 		let [projects, testimonials] = await Promise.all([
 			getApi('/projects'),
-			getApi('/testimonials'),
+			getApi('/testimonials')
 		]);
 		projects.data = (projects.data || []).map(({ id, attributes }) => ({
 			name: attributes.name,
@@ -23,7 +23,7 @@
 			status: projects.status,
 			props: {
 				projects: projects.data,
-				testimonials: getAttributes(testimonials.data),
+				testimonials: getAttributes(testimonials.data)
 			}
 		};
 	};
@@ -42,27 +42,27 @@
 <script lang="ts">
 	import Projects from '$lib/Projects/index.svelte';
 	import Button from '$lib/Components/Button.svelte';
-    import ServiceSubmit from '$lib/Form/Service.svelte';
+	import ServiceSubmit from '$lib/Form/Service.svelte';
 
-	export let projects: Projects[] = [];
-    export let testimonials = [];
+	let projects: Projects[] = [];
+	let testimonials = [];
 
 	const services = [
 		{
 			name: 'Beats',
-			text: 'Beats is a music platform that allows you to create, share, and discover music.'
+			text: 'Visit our beat catalog on Soundcloud or Youtube. Links can be found on our beats page.'
 		},
 		{
 			name: 'Recording',
-			text: 'Recording is a music platform that allows you to create, share, and discover music.'
+			text: 'Klean Studios has no official hours of operation. We work to the artist’s convenience and base scheduling around clientele availability.'
 		},
 		{
 			name: 'Mixing',
-			text: 'Mixing is a music platform that allows you to create, share, and discover music.'
+			text: 'We offer two types of mixing. Stem mixing and two stereo track mixing for pre-master final mixes.'
 		},
 		{
 			name: 'Mastering',
-			text: 'Mastering is a music platform that allows you to create, share, and discover music.'
+			text: 'Send us two or three reference mixes for track comparison and we’ll master your song to your liking. Our mastering deal also includes one revision with no additional cost.'
 		}
 	];
 
@@ -70,17 +70,17 @@
 		{
 			img: '/IMG-4087.jpg',
 			alt: '',
-			text: 'Lorem ad sequi temporibus consectetur sunt Atque repellendus sint alias laboriosam minus labore. Dicta alias sapiente numquam quisquam consectetur odit? Quae neque blanditiis illo quos nam! Ad earum quisquam veritatis'
+			text: 'The song creation and recording process begins with an introduction to your style. It is super beneficial to know what kind of sound you are aiming for from the very jump, so we always request two to three songs that we can use as references for your track. Typically these are songs from other artists but they can also be past songs by you that you think represents your style well.'
 		},
 		{
 			img: '/EEC4FE20-FF48-4239-B0A6-A73AE8193304.jpg',
 			alt: '',
-			text: 'Lorem ad sequi temporibus consectetur sunt Atque repellendus sint alias laboriosam minus labore. Dicta alias sapiente numquam quisquam consectetur odit? Quae neque blanditiis illo quos nam! Ad earum quisquam veritatis'
+			text: 'For recording vocals we have an acoustically treated vocal booth. The two pieces of equipment you’ll find inside are the Shure SM57 microphone and a pair of Audio Technica ATH M40x’s. All vocals are recorded through the Apollo Twin X DUO audio interface and processed in Ableton Live or Logic Pro. The booth also has LED lights installed with a remote control so that you can choose the color that best suits you while inside. When recording instrumentation we have a standard way of doing things, but we are always open to suggestions and new ideas. If there is a specific way you would like to record something we will accompany that to our best ability.'
 		},
 		{
 			img: '/IMG-4072.jpg',
 			alt: '',
-			text: 'Lorem ad sequi temporibus consectetur sunt Atque repellendus sint alias laboriosam minus labore. Dicta alias sapiente numquam quisquam consectetur odit? Quae neque blanditiis illo quos nam! Ad earum quisquam veritatis'
+			text: "Before hitting the record button we will check tuning and each microphone's response to instrumentation and voice. In band settings this includes checking the microphones response between the instruments that are opposite of each other. Such as the guitar one’s microphone will record guitar two to check for bleeding then vice versa. Upon that we will capture approximately ten seconds of performance and listen to the playback. That way you have an idea of how everything will sound once fully recorded. Now we are ready to record your track."
 		}
 	];
 </script>
@@ -139,28 +139,35 @@
 <Projects {projects} />
 -->
 
-<!--
 <section class="about-max">
-    <img src="/max-1.jpg" alt="Max" />
+	<img src="/max-profile.jpg" alt="Max" />
 
-    <span class="text">
-        Klean Studios
+    <span class="about-me">
+        About<br />Me
     </span>
 
-    <div class="social-media">
-    {#each [
-        { name: 'Twitter', alt: '', href: '', src: '' },
-        { name: 'Facebook', alt: '', href: '', src: '' },
-        { name: '', alt: '', href: '', src: '' },
-        ] as socialMedia}
-        <a href={socialMedia.href}>
-            {socialMedia.name}
-            <!-- <img alt={socialMedia.alt} src={socialMedia.src} /> --\>
-        </a>
-    {/each}
-    </div>
+	<span class="text">
+        <p>
+		Graduating in May of 2022 from Mary Baldwin University, Klean received a degree in music with
+		emphasis in composition as well as completed extracurricular training in mastering music. Over
+		the past five years he has worked with many artists in a multitude of genres, including rock,
+        rap/hip hop, RnB, indie, pop, and jazz music.
+        </p>
+        <p>With experience in recording/producing live bands
+		and doing studio production he is equipped with all the skills of a full stack audio engineer
+		and can be used as a producer or for unbiased feedback.
+        </p>
+	</span>
+
+	<div class="social-media">
+		{#each [{ name: 'Twitter', alt: '', href: '', src: '' }, { name: 'Facebook', alt: '', href: '', src: '' }, { name: '', alt: '', href: '', src: '' }] as socialMedia}
+			<a href={socialMedia.href}>
+				{socialMedia.name}
+                <!-- <img alt={socialMedia.alt} src={socialMedia.src} /> -->
+			</a>
+		{/each}
+	</div>
 </section>
--->
 
 <!--
 <section class="beats">
@@ -170,7 +177,7 @@
 -->
 
 <section class="service">
-    <ServiceSubmit />
+	<ServiceSubmit />
 </section>
 
 <style lang="scss">
@@ -184,22 +191,22 @@
 		font-size: 2rem;
 	}
 
-    .beats {
-        background: #FE5B00;
-        height: 100vh;
-        width: 100%;
-        position: relative;
+	.beats {
+		background: #fe5b00;
+		height: 100vh;
+		width: 100%;
+		position: relative;
 
-        h2 {
-            font-size: 30rem;
-        }
-        img {
-            position: absolute;
-            width: 200px;
-            height: 200px;
-            object-fit: contain;
-        }
-    }
+		h2 {
+			font-size: 30rem;
+		}
+		img {
+			position: absolute;
+			width: 200px;
+			height: 200px;
+			object-fit: contain;
+		}
+	}
 
 	.hero {
 		position: relative;
@@ -211,13 +218,13 @@
 			/ 3fr 1400px 1fr;
 		width: 100%;
 		height: 100vh;
-        color: white;
-        font-size: 2rem;
+		color: white;
+		font-size: 2rem;
 
-        h1 {
-            font-size: 5em;
-            margin-bottom: 2rem;
-        }
+		h1 {
+			font-size: 5em;
+			margin-bottom: 2rem;
+		}
 
 		.hero__img {
 			position: absolute;
@@ -245,13 +252,11 @@
 
 		.services__container {
 			margin-top: 3em;
-			display: flex;
+			display: grid;
+			grid-template-columns: repeat(4, 1fr);
 			width: 100%;
 			max-width: var(--screen-lg);
-		}
-
-		.service + .service {
-			margin-left: 1rem;
+			grid-gap: 1rem;
 		}
 	}
 
@@ -268,14 +273,16 @@
 
 		.the-space__img {
 			position: absolute;
-            object-fit: cover;
+			object-fit: cover;
 			width: 100%;
 			height: 100%;
 		}
 	}
 
 	.the-process {
-		width: 1000px;
+		width: var(--screen-lg);
+		margin-bottom: 4rem;
+
 		.process + .process {
 			margin-top: 5rem;
 		}
@@ -286,7 +293,7 @@
 			align-items: center;
 			grid-template:
 				'number text img' 600px
-				/ auto 250px 1fr;
+				/ 250px 300px 1fr;
 			grid-gap: 3rem;
 
 			.text {
@@ -308,27 +315,62 @@
 		}
 	}
 
-    .about-max {
-        display: grid;
-        width: 100%;
-        grid-template:
-            "image text ." 800px
-            ". . social-media" auto
-            / 1fr 1fr 1fr;
+	.about-max {
+		display: grid;
+		width: 100%;
+        margin-right: 4rem;
+		grid-template:
+			'image . .' 800px
+			'. . .' 50px
+			/ 1fr 1fr 200px;
 
-        img {
-            grid-area: "image";
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
+		img {
+			grid-area: image;
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+
+        .about-me {
+            grid-row: 1 / -1;
+            grid-column: 2;
+            align-self: start;
+            justify-self: end;
+            position: absolute;
+
+            text-transform: uppercase;
+            text-align: right;
+            line-height: 1;
+            font-size: 20vw;
+            font-family: var(--font-secondary);
         }
 
-        .text {
-            grid-area: "text";
-        }
+		.text {
+            align-self: end;
+            justify-self: start;
+            grid-row: 1;
+            grid-column: 1 / 3;
 
-        .social-media {
-            grid-area: "social-media";
-        }
-    }
+            padding: 2rem;
+            margin: 0 0 4rem 4rem;
+            position: relative;
+            width: max(50%, 400px);
+
+            text-align: left;
+            background: rgba(0 0 0 / 0.7);
+		}
+
+		.social-media {
+            display: flex;
+            flex-direction: column;
+            justify-self: end;
+            text-align: right;
+            grid-column: 3;
+            grid-row: 2;
+
+            a {
+                color: white;
+            }
+		}
+	}
 </style>
