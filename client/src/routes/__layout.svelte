@@ -33,27 +33,45 @@
 			<li>studio.klean@gmail.com</li>
 			<li>Roanoke - Staunton VA</li>
 		</ul>
+
 	</footer>
+		<div class="shameless-plug">
+			made by
+            <a href="https://treywilkinson.com" target="_blank">
+			<svg viewBox="0 0 138.71225 89.033352">
+				<g transform="translate(-60.66768,-43.929754)">
+					<path
+						d="m 130.59674,43.929754 c -21.1962,21.19624 -44.79063,44.79013 -69.92906,69.928546 l 8.7936,8.7938 24.925101,-23.918946 V 132.9631 H 107.61449 V 85.505014 l 21.52168,-21.52116 v 65.088526 l 0.0104,0.007 c 0.003,6.52743 0.005,-2.66668 0.008,3.86074 l 28.23724,-23.14117 22.41206,23.14122 19.57607,-20.22718 -9.25886,-9.25888 -11.17502,11.16263 L 157.3639,91.333414 142.36483,103.70526 V 55.697854 Z"
+					/>
+				</g>
+			</svg>
+			Trey Wilkinson
+            </a>
+		</div>
 </div>
 
 <style global lang="scss">
 	body {
 		margin: 0;
+		--c-bg: #1f222b;
 		--c-pri: #b71ac1;
 		--c-sec: #f5ff3b;
 		--c-ter: #f80000;
 
+		--screen-md: 800px;
 		--screen-lg: 1200px;
-        --font-secondary: 'Abril Fatface', serif;
+		--font-secondary: 'Abril Fatface', serif;
+		--font-primary: 'Work Sans', sans-serif;
 	}
 
 	* {
 		font-family: 'Work Sans', sans-serif;
+            box-sizing: border-box;
 	}
 
-    a {
-        font-family: 'Abril Fatface', serif;
-    }
+	a {
+		font-family: 'Abril Fatface', serif;
+	}
 
 	h1,
 	h2,
@@ -78,19 +96,23 @@
 
 	.footer-wrapper {
 		display: flex;
-		justify-content: center;
+		align-items: center;
 		width: 100%;
+        flex-direction: column;
 	}
 
 	footer {
-        padding: 2rem 0;
+		padding: 2rem 0;
 		display: grid;
-		width: var(--screen-lg);
+		width: var(--screen-md);
+		height: 80vh;
 		grid-template:
 			'logo collaborate' 1fr
 			'klean-studios links' 1fr
 			'social-media contact' 1fr
+			'shameless-plug shameless-plug' auto
 			/ 1fr 1fr;
+		align-items: end;
 
 		.logo {
 			width: 2rem;
@@ -103,31 +125,47 @@
 
 		.klean-studios {
 			text-align: left;
-            font-size: 1.5rem;
-            grid-area: 'klean-studios';
-            align-self: end;
+			font-size: 1.5rem;
+			grid-area: 'klean-studios';
 		}
 
 		.links {
 			text-align: right;
 			grid-area: 'links';
-            align-self: end;
 		}
 
 		.social-media {
-            grid-area: 'social-media';
-            align-self: end;
+			grid-area: 'social-media';
 		}
 
 		.collaborate {
-            font-size: 1.5rem;
+			font-size: 1.5rem;
 			grid-area: 'collaborate';
 			text-align: right;
 		}
 
 		.contact {
-            grid-area: "contact";
+			grid-area: 'contact';
 			text-align: right;
 		}
 	}
+
+    .shameless-plug {
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        background: #ccc;
+        font-size: 0.8rem;
+        padding: 0.5rem;
+            svg {
+                width: 1.5rem;
+                margin: 0 4px;
+            }
+            a {
+                font-family: var(--font-primary);
+                text-decoration: none;
+                color: black;
+            }
+    }
 </style>

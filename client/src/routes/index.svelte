@@ -44,8 +44,15 @@
 	import Button from '$lib/Components/Button.svelte';
 	import ServiceSubmit from '$lib/Form/Service.svelte';
 
-	let projects: Projects[] = [];
-	let testimonials = [];
+	export let projects: Projects[] = [];
+	export let testimonials = [];
+    let selectedTestimonial = null;
+
+    $: {
+        if (testimonials.length > 0 && selectedTestimonial === null) {
+            selectedTestimonial = 0;
+        }
+    }
 
 	const services = [
 		{
@@ -126,14 +133,22 @@
 	{/each}
 </section>
 
-<!--
 <section class="testimonials">
-    {#each testimonials as testimonial}
-        {testimonial.name}
-        {testimonial.testimony}
-    {/each}
+    <button on:click={() => selectedTestimonial -= 1}>
+        -
+    </button>
+    {selectedTestimonial}
+    {#if testimonials[selectedTestimonial]}
+    <div class="testimonial">
+        <span class="testimony">{testimonials[selectedTestimonial].testimony}</span>
+        <span class="name">{testimonials[selectedTestimonial].name}</span>
+        <span class="info">{testimonials[selectedTestimonial].info}</span>
+    </div>
+    {/if}
+    <button on:click={() => selectedTestimonial += 1}>
+        +
+    </button>
 </section>
--->
 
 <!--
 <Projects {projects} />
@@ -169,12 +184,12 @@
 	</div>
 </section>
 
-<!--
 <section class="beats">
     <h2>BEATS</h2>
-            <img src="/SoundCloud-Logo.png" />
+    <a href="https://soundcloud.com/kleanstudios" target="_blank">
+        <img src="/soundcloud-logo-white.png" alt="Soundcloud logo"/>
+    </a>
 </section>
--->
 
 <section class="service">
 	<ServiceSubmit />
@@ -191,20 +206,47 @@
 		font-size: 2rem;
 	}
 
+    .testimonials {
+        .testimonial {
+            display: flex;
+            flex-direction: column;
+
+            .testimony {
+            }
+            .name {
+                font-family: var(--font-secondary);
+            }
+            .info {
+            }
+        }
+    }
+
 	.beats {
-		background: #fe5b00;
 		height: 100vh;
 		width: 100%;
 		position: relative;
+        display: grid;
+        grid-template: 1fr / 1fr;
+        align-items: start;
+        justify-items: center;
+        padding: 8rem 0 12rem 0;
+
+		background: linear-gradient(to bottom, #f89810 0%, #f8320f 100%);
+
+		img {
+			width: 700px;
+			height: 700px;
+			object-fit: contain;
+            position: relative;
+		}
 
 		h2 {
-			font-size: 30rem;
-		}
-		img {
-			position: absolute;
-			width: 200px;
-			height: 200px;
-			object-fit: contain;
+            opacity: 0.5;
+            position: absolute;
+            color: var(--c-bg);
+            bottom: 0;
+            right: 0;
+			font-size: 30vw;
 		}
 	}
 
@@ -318,6 +360,8 @@
 	.about-max {
 		display: grid;
 		width: 100%;
+        margin-top: 4rem;
+        margin-bottom: 8rem;
         margin-right: 4rem;
 		grid-template:
 			'image . .' 800px
