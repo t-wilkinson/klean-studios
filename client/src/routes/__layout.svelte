@@ -31,7 +31,6 @@
 		<ul class="contact">
 			<li>(540) 816-2061</li>
 			<li>studio.klean@gmail.com</li>
-			<li>Roanoke - Staunton VA</li>
 		</ul>
 
 	</footer>
@@ -102,9 +101,10 @@
 	}
 
 	footer {
-		padding: 2rem 0;
+		padding: 2rem 1rem;
 		display: grid;
-		width: var(--screen-md);
+        width: 100%;
+		max-width: var(--screen-md);
 		height: 80vh;
 		grid-template:
 			'logo collaborate' 1fr

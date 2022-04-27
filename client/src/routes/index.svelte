@@ -40,11 +40,12 @@
 </script>
 
 <script lang="ts">
-	import Projects from '$lib/Projects/index.svelte';
-	import Button from '$lib/Components/Button.svelte';
+	// import Projects from '$lib/Projects/index.svelte';
+	import Link from '$lib/Components/Link.svelte';
 	import ServiceSubmit from '$lib/Form/Service.svelte';
+    import { fromResponse, toApiUrl } from '$lib/api.js';
 
-	export let projects: Projects[] = [];
+	// export let projects: Projects[] = [];
 	export let testimonials = [];
     let selectedTestimonial = null;
 
@@ -93,29 +94,43 @@
 </script>
 
 <section class="hero">
-	<img class="hero__img" src="/IMG-4290.jpg" alt="The studio" />
-	<div class="hero__content">
+	<img class="img" src="/IMG-4290.jpg" alt="The studio" />
+	<div class="content">
 		<h1>KLEAN STUDIOS</h1>
-		<Button>Let's Create</Button>
+        <Link
+            class="link"
+            href="#service"
+            >Let's Create</Link>
 	</div>
 </section>
 
 <section class="services">
 	<h2>Services</h2>
-	<div class="services__container">
+	<div class="container">
 		{#each services as service}
 			<div class="service">
 				<h3>{service.name}</h3>
+                <div class="sep" />
 				<p>{service.text}</p>
 			</div>
 		{/each}
 	</div>
 </section>
 
+<!--
+    <img style="width: 100px; height: 100px;" src="IMG-4246.jpg" />
+<img style="width: 100px; height: 100px;" src="IMG-4268.jpg" />
+<img style="width: 100px; height: 100px;" src="IMG-4279.jpg" />
+<img style="width: 100px; height: 100px;" src="IMG-4291.jpg" />
+-->
+
 <section class="the-space">
-	<img class="the-space__img" src="/IMG-4258.jpg" alt="The space" />
-	<div class="the-space__content">
+	<img src="/IMG-4258.jpg" alt="The space" />
+	<div class="content">
 		<h2>The Space</h2>
+    <p>
+        Klean Studios is a small business that specializes in recording and producing music. We work with independent artists or bands as well as indie labels, major labels, and other producer/audio engineers. Capable of providing guidance or directly working on the production of a track, any service you need can be fulfilled by us. At least one engineer will always be present during studio sessions to provide either assistance in the creation process and/or overlook the production of your track.
+    </p>
 	</div>
 </section>
 
@@ -123,7 +138,10 @@
 	{#each processes as process, i}
 		<div class="process">
 			<span class="number">
+                <span>
 				{i + 1}
+                </span>
+                <div class="number-underline" />
 			</span>
 			<span class="text">
 				{process.text}
@@ -134,20 +152,62 @@
 </section>
 
 <section class="testimonials">
-    <button on:click={() => selectedTestimonial -= 1}>
-        -
+    <div class="testimonials-wrapper">
+
+    <button on:click={() => {
+            selectedTestimonial -= 1
+            if (selectedTestimonial < 0) {
+                selectedTestimonial = testimonials.length - 1
+            }
+            }}>
+        <svg
+            width="20" height="20"
+             viewBox="0 0 34.075 34.075" style="enable-background:new 0 0 34.075 34.075;">
+                <path style="fill:#010002;" d="M24.57,34.075c-0.505,0-1.011-0.191-1.396-0.577L8.11,18.432c-0.771-0.771-0.771-2.019,0-2.79
+                    L23.174,0.578c0.771-0.771,2.02-0.771,2.791,0s0.771,2.02,0,2.79l-13.67,13.669l13.67,13.669c0.771,0.771,0.771,2.021,0,2.792
+                    C25.58,33.883,25.075,34.075,24.57,34.075z"/>
+        </svg>
     </button>
-    {selectedTestimonial}
+
     {#if testimonials[selectedTestimonial]}
     <div class="testimonial">
-        <span class="testimony">{testimonials[selectedTestimonial].testimony}</span>
+        <q class="testimony">{testimonials[selectedTestimonial].testimony}</q>
         <span class="name">{testimonials[selectedTestimonial].name}</span>
         <span class="info">{testimonials[selectedTestimonial].info}</span>
     </div>
     {/if}
-    <button on:click={() => selectedTestimonial += 1}>
-        +
+
+    <button on:click={() => {
+            selectedTestimonial += 1
+            if (selectedTestimonial > testimonials.length - 1) {
+                selectedTestimonial = 0
+            }
+        }}>
+
+    <svg
+        width="20" height="20"
+                   viewBox="0 0 34.075 34.075" style="enable-background:new 0 0 34.075 34.075;"
+                                               transform="rotate(180)"
+                                               >
+            <path style="fill:#010002;" d="M24.57,34.075c-0.505,0-1.011-0.191-1.396-0.577L8.11,18.432c-0.771-0.771-0.771-2.019,0-2.79
+                L23.174,0.578c0.771-0.771,2.02-0.771,2.791,0s0.771,2.02,0,2.79l-13.67,13.669l13.67,13.669c0.771,0.771,0.771,2.021,0,2.792
+                C25.58,33.883,25.075,34.075,24.57,34.075z"/>
+    </svg>
+
     </button>
+    </div>
+</section>
+
+<section class="mission">
+    <div class="container">
+        <img class="image" src="IMG-4279.jpg" alt="Mission" />
+        <div class="text">
+            <h2>Our Mission</h2>
+            <p>
+                Our mission is to create a comfortable workspace as well as provide industry standard production. We believe in collaboration and using the strengths of others to better portray the message you intend to deliver during the listening of your music. When coming to the studio you should feel free to express yourself and speak openly about ideas. Your vision is our priority.
+            </p>
+        </div>
+    </div>
 </section>
 
 <!--
@@ -191,8 +251,17 @@
     </a>
 </section>
 
-<section class="service">
-	<ServiceSubmit />
+<section id="service" class="service">
+    <ServiceSubmit
+        onSubmit={async (formData) => {
+            const response = fetch(toApiUrl('/service/submit'), {
+                method: 'POST',
+                body: formData,
+            })
+            const { data, status } = await fromResponse(response)
+            console.log(data, status)
+        }}
+    />
 </section>
 
 <style lang="scss">
@@ -207,16 +276,52 @@
 	}
 
     .testimonials {
+        background: white;
+        margin: 0;
+        width: 100%;
+        color: black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 12rem;
+
+        .testimonials-wrapper {
+            width: 100%;
+            max-width: var(--screen-md);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        button {
+            margin: 0 2rem;
+            background: none;
+            border: none;
+            font-size: 2rem;
+            cursor: pointer;
+            color: var(--color-primary);
+            font-weight: bold;
+        }
+
         .testimonial {
+            height: 25rem;
+            padding: 4rem 0;
             display: flex;
             flex-direction: column;
+            text-align: center;
+            justify-content: center;
 
             .testimony {
+                font-size: 1.5rem;
             }
+
             .name {
+                margin-top: 1em;
+                font-size: 1.5rem;
                 font-family: var(--font-secondary);
             }
             .info {
+                margin-top: 0.5rem;
+                font-family: var(--font-secondary);
             }
         }
     }
@@ -234,7 +339,8 @@
 		background: linear-gradient(to bottom, #f89810 0%, #f8320f 100%);
 
 		img {
-			width: 700px;
+            width: 100%;
+			max-width: 700px;
 			height: 700px;
 			object-fit: contain;
             position: relative;
@@ -253,22 +359,18 @@
 	.hero {
 		position: relative;
 		display: grid;
-		grid-template:
-			'. . .' 1fr
-			'. content .' auto
-			'. . .' 2fr
-			/ 3fr 1400px 1fr;
+		/* grid-template: */
+		/* 	'. . .' 1fr */
+		/* 	'. content .' auto */
+		/* 	'. . .' 2fr */
+		/* 	/ 3fr 1400px 1fr; */
 		width: 100%;
 		height: 100vh;
 		color: white;
-		font-size: 2rem;
+        padding: 4rem;
+        justify-items: center;
 
-		h1 {
-			font-size: 5em;
-			margin-bottom: 2rem;
-		}
-
-		.hero__img {
+		.img {
 			position: absolute;
 			top: 0;
 			left: 0;
@@ -277,7 +379,17 @@
 			object-fit: cover;
 		}
 
-		.hero__content {
+		.content {
+            font-size: 1vw;
+
+            h1 {
+                margin-bottom: 2rem;
+            }
+
+            .link {
+                font-size: 22rem;
+            }
+
 			position: relative;
 			grid-area: content;
 			display: flex;
@@ -290,15 +402,41 @@
 		display: flex;
 		flex-direction: column;
 		align-items: start;
-		margin: 10rem 0;
+		margin: 10rem 0 20rem 0;
+        position: relative;
+        padding: 2rem;
 
-		.services__container {
+        h2 {
+            opacity: 0.05;
+            position: absolute;
+            left: 50%;
+            transform: translate(-50%, 6rem);
+            font-size: 18vw;
+            top: 0;
+            /* text-shadow: 4px 4px black; */
+        }
+
+		.container {
 			margin-top: 3em;
-			display: grid;
-			grid-template-columns: repeat(4, 1fr);
+            display: flex;
 			width: 100%;
 			max-width: var(--screen-lg);
-			grid-gap: 1rem;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+
+            .service {
+                background: rgba(0 0 0 / 0.2);
+                padding: 1rem;
+                width: 240px;
+
+                .sep {
+                    width: 6rem;
+                    height: 4px;
+                    background-color: var(--c-ter);
+                    border-radius: 9999rem;
+                }
+            }
 		}
 	}
 
@@ -309,11 +447,14 @@
 		width: 100%;
 		place-items: center;
 
-		.the-space__content {
+		.content {
+            text-align: center;
+            width: 100%;
+            max-width: var(--screen-md);
 			position: relative;
 		}
 
-		.the-space__img {
+		img {
 			position: absolute;
 			object-fit: cover;
 			width: 100%;
@@ -322,8 +463,10 @@
 	}
 
 	.the-process {
-		width: var(--screen-lg);
-		margin-bottom: 4rem;
+        width: 100%;
+		max-width: var(--screen-lg);
+        margin-top: 6rem;
+        margin-bottom: 6rem;
 
 		.process + .process {
 			margin-top: 5rem;
@@ -338,18 +481,43 @@
 				/ 250px 300px 1fr;
 			grid-gap: 3rem;
 
+            @media only screen and (max-width: 1200px) {
+                grid-template:
+                    'text img' 600px
+                    / 300px 1fr;
+                padding: 0 4rem;
+                .number {
+                    display: none;
+                }
+            }
+
 			.text {
-				grid-area: 'text';
+				grid-area: text;
 			}
 
 			.number {
-				grid-area: 'number';
-				font-family: 'Abril Fatface', serif;
-				font-size: 16rem;
+				grid-area: number;
+                position: relative;
+
+                span {
+                    z-index: 1;
+                    font-size: 16rem;
+                    position: relative;
+                    font-family: 'Abril Fatface', serif;
+                }
+
+                .number-underline {
+                    display: none;
+                    position: absolute;
+                    transform: translateY(-120px);
+                    background-color: var(--c-ter);
+                    height: 8rem;
+                    width: 100%;
+                }
 			}
 
 			img {
-				grid-area: 'img';
+				grid-area: img;
 				width: 100%;
 				height: 100%;
 				object-fit: cover;
@@ -360,7 +528,7 @@
 	.about-max {
 		display: grid;
 		width: 100%;
-        margin-top: 4rem;
+        margin-top: 10rem;
         margin-bottom: 8rem;
         margin-right: 4rem;
 		grid-template:
@@ -417,4 +585,29 @@
             }
 		}
 	}
+
+    .mission {
+        background: #494f60;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+
+        .container {
+            display: grid;
+            max-width: var(--screen-lg);
+            grid-template:
+                'image text' 100%
+                / 1fr 1fr;
+            place-items: center;
+
+            .image {
+                grid-area: image;
+                width: 100%;
+            }
+            .text {
+                grid-area: text;
+                padding: 0 2rem;
+            }
+        }
+    }
 </style>

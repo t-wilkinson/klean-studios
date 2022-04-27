@@ -1,7 +1,10 @@
-const API_URL = 'http://localhost:1337/api'
+import { variables } from '$lib/variables'
 
-export async function getApi(url) {
-  const response = await fetch(`${API_URL}${url}`)
+export function toApiUrl(url) {
+  return `${variables.apiUrl}${url}`
+}
+
+export async function fromResponse(response) {
   const data = response.ok && (await response.json()).data || undefined
   return {
     data,
@@ -9,6 +12,23 @@ export async function getApi(url) {
   }
 }
 
-export function getAttributes(data) {
+export async function fetchApi(url, data=undefined) {
+  const response = await fetch(toApiUrl(url), {
+    ...data,
+    headers: {
+      'Content-Type': 'application/json',
+      ...data.headers,
+    },
+    body: JSON.stringify(data?.body),
+  })
+  return await fromResponse(response)
+}
+
+export async function getApi(url) {
+  const response = await fetch(toApiUrl(url))
+  return await fromResponse(response)
+}
+
+export function getAttributes(data=[]) {
   return data.map(({attributes}) => attributes)
 }
