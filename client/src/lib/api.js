@@ -1,7 +1,7 @@
 import { variables } from '$lib/variables'
 
 export function toApiUrl(url) {
-  return `${variables.apiUrl}${url}`
+  return `${variables.apiUrl}/api${url}`
 }
 
 export async function fromResponse(response) {
