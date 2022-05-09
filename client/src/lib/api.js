@@ -1,5 +1,9 @@
 import { variables } from '$lib/variables'
 
+export function toBackendUrl(url) {
+  return `${variables.apiUrl}${url}`
+}
+
 export function toApiUrl(url) {
   return `${variables.apiUrl}/api${url}`
 }
