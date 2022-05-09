@@ -24,9 +24,4 @@
         flex-direction: column;
         align-items: center;
     }
-    @media (max-width: 600px) {
-        h2 {
-            font-size: 2rem;
-        }
-    }
 </style>

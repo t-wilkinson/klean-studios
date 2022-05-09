@@ -73,7 +73,7 @@
 		align-items: center;
         margin-bottom: 6rem;
 
-		background: #e6eaf9;
+		background: #edf0f9;
         color: #001758;
 
 		.testimonials-wrapper {

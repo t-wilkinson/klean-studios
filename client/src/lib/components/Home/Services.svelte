@@ -61,8 +61,7 @@
 
         @media (max-width: 800px) {
             padding: 0 2rem;
-            margin: 0;
-            margin-bottom: 4rem;
+            margin: 4rem 0;
             grid-template:
                 "image" 300px
                 "text" auto
