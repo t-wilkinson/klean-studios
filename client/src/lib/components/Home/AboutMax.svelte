@@ -9,11 +9,6 @@
 		<p>
             Graduating in May of 2022 from Mary Baldwin University, Maxwell Klimczak (aka Klean) received a degree in music with emphasis in composition as well as completed extracurricular training in mastering audio. Over the past five years he has worked with many artists in a multitude of genres, including rock, rap/hip hop, RnB, indie, pop, and jazz. With experience in recording/producing live bands and doing studio production he is equipped with all the skills of a full stack audio engineer and can be used as a producer or to oversee your own production.
 		</p>
-		<p>
-			With experience in recording/producing live bands and doing studio production he is equipped
-			with all the skills of a full stack audio engineer and can be used as a producer or for
-			unbiased feedback.
-		</p>
 	</span>
 
 	<div class="social-media">
@@ -36,9 +31,9 @@
 		margin-top: 10rem;
 		margin-bottom: 8rem;
 		grid-template:
-			'image . .' 800px
-			'. . .' 50px
-			/ 1fr 1fr 200px;
+			'image text' 800px
+			'image social-media' auto
+			/ 1fr 1fr;
         position: relative;
 
 		.image {
@@ -58,25 +53,19 @@
 			text-transform: uppercase;
 			text-align: right;
 			line-height: 1;
-			font-size: 14vw;
+			font-size: 12vw;
 			font-family: var(--font-secondary);
             margin-right: 1rem;
 		}
 
 		.text {
-			align-self: end;
-			justify-self: center;
-			grid-row: 1;
-			grid-column: 1 / -1;
-
 			padding: 2rem;
 			margin: 0 0 0rem 0rem;
+            align-self: end;
 			position: relative;
-			width: max(50%, 600px);
-            transform: translateY(25%);
-
+            grid-area: text;
 			text-align: left;
-			background: rgba(0 0 0 / 0.7);
+            width: 100%;
 		}
 
 		.social-media {
@@ -84,8 +73,7 @@
 			flex-direction: column;
 			justify-self: end;
 			text-align: right;
-			grid-column: 3;
-			grid-row: 2;
+            grid-area: social-media;
 			padding-right: 1rem;
 
 			a {
@@ -93,35 +81,8 @@
 			}
 		}
 
-		@media only screen and (max-width: 800px) {
-			margin-right: 0rem;
-			grid-template:
-				'top' 800px
-				'bottom' 50px
-				/ 1fr;
 
-			.image {
-                grid-area: top;
-			}
-
-            .about-me {
-                font-size: 20vw;
-            }
-
-			.text {
-				width: auto;
-				box-sizing: border-box;
-				margin: 1rem;
-                grid-area: top;
-                transform: translateY(0);
-			}
-
-			.social-media {
-                grid-area: bottom;
-			}
-		}
-
-		@media only screen and (max-width: 650px) {
+		@media only screen and (max-width: 700px) {
             margin-top: 0;
             margin-bottom: 4rem;
 			grid-template:
@@ -135,6 +96,7 @@
             }
             .about-me {
                 grid-area: image;
+                font-size: 16vw;
             }
             .text {
                 margin: 0;

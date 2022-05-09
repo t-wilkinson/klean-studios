@@ -12,6 +12,7 @@
 <section class="testimonials">
 	<div class="testimonials-wrapper">
 		<button
+      class="left"
 			on:click={() => {
 				selectedTestimonial -= 1;
 				if (selectedTestimonial < 0) {
@@ -20,8 +21,6 @@
 			}}
 		>
 			<svg
-				width="30"
-				height="30"
 				viewBox="0 0 34.075 34.075"
 			>
 				<path
@@ -41,6 +40,7 @@
 		{/if}
 
 		<button
+             class="right"
 			on:click={() => {
 				selectedTestimonial += 1;
 				if (selectedTestimonial > testimonials.length - 1) {
@@ -49,8 +49,6 @@
 			}}
 		>
 			<svg
-				width="30"
-				height="30"
 				viewBox="0 0 34.075 34.075"
                 class="right"
 			>
@@ -79,31 +77,43 @@
 		.testimonials-wrapper {
 			width: 100%;
 			max-width: var(--screen-md);
-			display: flex;
-			justify-content: space-between;
+			display: grid;
+            grid-template:
+                "left testimonial right" auto
+                / auto 1fr auto;
+            place-items: center;
 		}
 
 		button {
 			margin: 0 2rem;
 			background: none;
 			border: none;
-			font-size: 2rem;
 			cursor: pointer;
-			font-weight: bold;
             color: inherit;
+
+            svg {
+                width: 1.5rem;
+                height: 1.5rem;
+                fill: currentColor;
+            }
 		}
 
-        svg {
-            fill: currentColor;
+        .left {
+            grid-area: left;
         }
 
-        svg.right {
-          transform-box: fill-box;
-          transform-origin: center;
-          transform: rotate(180deg);
+        .right {
+            grid-area: right;
+
+            svg {
+              transform-box: fill-box;
+              transform-origin: center;
+              transform: rotate(180deg);
+            }
         }
 
 		.testimonial {
+            grid-area: testimonial;
 			height: 25rem;
 			padding: 4rem 0;
 			display: flex;
@@ -139,5 +149,38 @@
 			}
 		}
 	}
+
+    @media (max-width: 600px) {
+        .testimonials {
+            .testimonials-wrapper {
+                padding: 1rem;
+                grid-template:
+                    "testimonial testimonial" auto
+                    "left right" auto
+                    / 1fr 1fr;
+
+            }
+
+            button {
+                margin: 0;
+            }
+
+            .left {
+                justify-self: start;
+            }
+
+            .right {
+                justify-self: end;
+            }
+
+            .testimonial {
+                height: 20rem;
+
+                .testimony {
+                    font-size: 1rem;
+                }
+            }
+        }
+    }
 
 </style>

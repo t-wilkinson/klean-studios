@@ -14,7 +14,7 @@
         </div>
 
 		<nav class="social-media">
-			follow me on
+			follow us on
 			<a href="https://www.instagram.com/klean_studios/">instagram</a>
 		</nav>
 		<ul class="contact">
@@ -87,6 +87,10 @@
 
 		.social-media {
 			grid-area: social-media;
+            a {
+                text-decoration: none;
+                color: var(--c-pri);
+            }
 		}
 
 		.collaborate {

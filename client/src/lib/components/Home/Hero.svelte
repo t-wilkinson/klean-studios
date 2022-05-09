@@ -34,7 +34,7 @@
 			width: 100%;
 			height: 100vh;
 			object-fit: cover;
-            filter: blur(4px) brightness(80%);
+            filter: blur(2px) brightness(75%);
 		}
 
 		.content {

@@ -45,9 +45,12 @@ let processes = [
 		max-width: var(--screen-lg);
         padding: 12rem 2rem 8rem;
 
-        h2 {
+        h3 {
             font-size: 4rem;
             margin-bottom: 8rem;
+            /* color: #a3998b; */
+            color: #e1d7cb;
+            /* color: #c3bbb0; */
         }
 
 		.process + .process {
