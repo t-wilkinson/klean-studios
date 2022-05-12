@@ -82,7 +82,7 @@
 
 					const bounds = e.currentTarget.getBoundingClientRect();
 					coords.set({
-						rotation: (e.movementX + e.movementY) * 3,
+						rotation: (e.movementX + e.movementY),
 						x: e.clientX - bounds.left,
 						y: e.clientY - bounds.top
     }, { soft: 0.1 });

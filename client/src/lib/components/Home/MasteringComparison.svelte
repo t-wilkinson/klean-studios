@@ -1,15 +1,51 @@
 <script lang="ts">
 	import { Howl, Howler } from 'howler';
 
-	function playSound(src: string) {
-		const sound = new Howl({
-			src: [src],
-            volume: 0.25,
-		});
+    let tracks = {
+        'lookatyou-before': {
+            label: 'Final Mix',
+            name: 'Look At You',
+            file: '/audio/look-at-you-preview.wav'
+        },
+        'lookatyou-after': {
+            label: 'Mastered',
+            name: 'Look At You',
+            file: '/audio/look-at-you-preview-master.wav',
+        },
+        'sleepwalker-before': {
+            label: 'Unmixed',
+            name: 'Sleep Walkers',
+            file: '/audio/sleep-walkers-preview.wav'
+        },
+        'sleepwalker-after': {
+            label: 'Mastered',
+            name: 'Sleep Walkers',
+            file: '/audio/sleep-walkers-preview-master.wav',
+        }
+    }
 
-		Howler.stop();
-		sound.play();
-        console.log(sound.duration())
+    for (const track of Object.values(tracks)) {
+        track.sound = new Howl({
+            src: track.file,
+            volume: 0.25,
+        })
+    }
+
+    let playingTrack = undefined
+    function getTrackSound(track) {
+        return tracks[track].sound
+    }
+
+	function playSound(track) {
+        const sound = getTrackSound(track)
+        if (sound.playing()) {
+            playingTrack = undefined
+            Howler.stop()
+        } else {
+            Howler.stop()
+            playingTrack = track
+            sound.play()
+        }
 	}
 </script>
 
@@ -17,18 +53,18 @@
     <div class="wrapper">
         <h2>Track Comparisons</h2>
         {#each [
-            { beforeText: 'Final Mix', afterText: 'Mastered', name: 'Look at You', before: 'look-at-you-preview.wav', after: 'look-at-you-preview-master.wav'},
-            { beforeText: 'Unmixed', afterText: 'Mastered', name: 'Sleep Walkers', before: 'sleep-walkers-preview.wav', after: 'sleep-walkers-preview-master.wav'},
-            ] as track, i}
+            {before: 'lookatyou-before', after: 'lookatyou-after' },
+            {before: 'sleepwalker-before', after: 'sleepwalker-after' },
+            ] as {before, after}, i}
             {#if i !== 0}
                 <div class="divider" />
             {/if}
             <div class="track-preview">
                 <span class="track-name">
-                    {track.name}
+                    {tracks[before].name}
                 </span>
-                <button class="before" on:click={() => playSound(`/audio/${track.before}`)}>{track.beforeText}</button>
-                <button class="after" on:click={() => playSound(`/audio/${track.after}`)}>{track.afterText}</button>
+                <button class="before" class:is-playing={playingTrack === before} on:click={() => playSound(before)}>{tracks[before].label}</button>
+                <button class="after" class:is-playing={playingTrack === after} on:click={() => playSound(after)}>{tracks[after].label}</button>
             </div>
         {/each}
                 </div>
@@ -87,11 +123,17 @@
             .before {
                 grid-area: before;
                 background: linear-gradient(var(--gradient-rotation), var(--c-pri), var(--before-color-end));
+                filter: saturate(0.35);
             }
 
             .after {
                 grid-area: after;
-                background: linear-gradient(var(--gradient-rotation), var(--after-color-end), #b6a384);
+                background: linear-gradient(var(--gradient-rotation), var(--after-color-end), #6b3bff);
+                filter: saturate(0.35);
+            }
+
+            .is-playing {
+                filter: none;
             }
 
             button {

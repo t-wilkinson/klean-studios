@@ -4,8 +4,8 @@ let processes = [
         {
         img: '/IMG-4087.jpg',
         alt: '',
-        label: 'Learn Your Style',
-        text: 'The song creation and recording process begins with an introduction to your style. It is super beneficial to know what kind of sound you are aiming for from the very jump, so we always request two to three songs that we can use as references for your track. Typically these are songs from other artists but they can also be past songs by you that you think represents your style well.'
+        label: 'Introduction and Planning',
+        text: 'Before we begin working we will listen to reference tracks and discuss what we want the end result of your song to be like. This includes listing instruments, genre, bpm, fx, and other important details about your song that are necessary for the producer to know. This step is important because it establishes the direction we are going in from the very jump and helps provide a clear vision for the producer and artist which assures that everyone is on the same page.'
         },
         {
         img: '/EEC4FE20-FF48-4239-B0A6-A73AE8193304.jpg',
@@ -45,8 +45,12 @@ let processes = [
 		max-width: var(--screen-lg);
         padding: 12rem 2rem 8rem;
 
-        h3 {
+        h2 {
             font-size: 4rem;
+            margin-bottom: 6rem;
+        }
+        h3 {
+            font-size: 2.5rem;
             margin-bottom: 8rem;
             /* color: #a3998b; */
             color: #e1d7cb;
@@ -132,7 +136,6 @@ let processes = [
 
         @media only screen and (max-width: 800px) {
             h2 {
-                font-size: 3rem;
                 margin-bottom: 4rem;
             }
 

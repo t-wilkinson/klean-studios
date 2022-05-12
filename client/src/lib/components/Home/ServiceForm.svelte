@@ -18,7 +18,7 @@
 
 <style lang="scss">
     .service-form {
-        margin: 4rem 2rem;
+        margin: 8rem 2rem;
         max-width: var(--screen-md);
         display: flex;
         flex-direction: column;

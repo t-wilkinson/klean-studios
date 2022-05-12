@@ -1,6 +1,5 @@
 <script lang="ts">
 	import Footer from '$lib/components/Footer.svelte';
-    console.log(process.env.NODE_ENV)
 </script>
 
 <main>

@@ -152,6 +152,10 @@ After scheduling with us once, you will always have direct contact to a producer
 			grid-template-columns: 1fr 1fr;
 		}
 
+        textarea {
+            padding: 1rem;
+        }
+
 		.submit {
 			font-size: 1.5rem;
 		}
@@ -161,6 +165,7 @@ After scheduling with us once, you will always have direct contact to a producer
         list-style: none;
         padding: 0;
         font-size: 1.10rem;
+        margin-top: 4rem;
 
         li {
             margin: 0;

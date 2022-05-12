@@ -47,7 +47,7 @@
         justify-items: center;
         width: 100%;
         max-width: var(--screen-lg);
-		margin: 10rem 0 10rem 0;
+		margin: 10rem 0;
 		position: relative;
 		padding: 0 2rem;
         gap: 1rem;
@@ -61,7 +61,7 @@
 
         @media (max-width: 800px) {
             padding: 0 2rem;
-            margin: 4rem 0;
+            margin: 4rem 0 8rem;
             grid-template:
                 "image" 300px
                 "text" auto
@@ -101,7 +101,7 @@
                 }
 
                 .label {
-                    color: #d689ff;
+                    color: #efd9fb;
                     margin-bottom: 0.5rem;
                 }
 

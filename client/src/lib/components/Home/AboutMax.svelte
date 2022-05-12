@@ -14,7 +14,7 @@
 	<div class="social-media">
         {#each [
             { name: 'Instagram', alt: 'Instagram@klean__official', href: 'https://www.instagram.com/klean_official/', src: '' },
-            { name: 'Soundcloud', alt: 'Soundcloud@kleanstudios', href: 'https://soundcloud.com/kleanstudios?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing', src: '' },
+            { name: 'Soundcloud', alt: 'Soundcloud@kleanstudios', href: 'https://soundcloud.com/klean_profile', src: '' },
             ] as socialMedia}
 			<a target="_blank" href={socialMedia.href}>
 				{socialMedia.name}
@@ -28,8 +28,8 @@
 	.about-max {
 		display: grid;
 		width: 100%;
-		margin-top: 10rem;
-		margin-bottom: 8rem;
+        max-width: var(--screen-lg);
+        margin: 10rem 0;
 		grid-template:
 			'image text' 800px
 			'image social-media' auto
@@ -53,7 +53,7 @@
 			text-transform: uppercase;
 			text-align: right;
 			line-height: 1;
-			font-size: 12vw;
+            font-size: clamp(1rem, 12vw, 8rem);
 			font-family: var(--font-secondary);
             margin-right: 1rem;
 		}

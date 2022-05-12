@@ -89,7 +89,7 @@
         padding: 0 2rem;
 
 		h2 {
-			font-size: 6rem;
+			font-size: 4rem;
 		}
 
         @media (max-width: 600px) {
