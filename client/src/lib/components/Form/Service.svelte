@@ -30,10 +30,10 @@
     const formData = new FormData(form);
     onSubmit(formData)
     .then(() => {
-    state = 'success'
+        state = 'success'
     })
     .catch(() => {
-    state = 'error'
+        state = 'error'
     })
     }}
     >

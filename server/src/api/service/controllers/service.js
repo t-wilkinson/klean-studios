@@ -50,7 +50,13 @@ module.exports = {
       await strapi.entityService.create('api::service.service', {
         data,
       })
+    } catch (err) {
+      console.error(err)
+      console.error(err.message)
+      console.error(err.details)
+    }
 
+    try {
       if (process.env.NODE_ENV !== 'development') {
         await sendMail({
           from: '"Klean Studios Server" <winston.trey.wilkinson@gmail.com>', // sender address
@@ -66,6 +72,8 @@ module.exports = {
       ctx.body = 'ok';
       ctx.status = 200
     } catch (err) {
+      console.error(err)
+      console.error(err.message)
       console.error(err.details)
       ctx.body = err;
       ctx.status = 400

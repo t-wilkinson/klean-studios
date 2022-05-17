@@ -1,17 +1,18 @@
 <script lang="ts">
 	import ServiceSubmit from '$lib/components/Form/Service.svelte';
-	import { fromResponse, toApiUrl } from '$lib/api.js';
+	import { toApiUrl } from '$lib/api.js';
 </script>
 
 <section id="service" class="service-form">
 	<ServiceSubmit
 		onSubmit={async (formData) => {
-			const response = fetch(toApiUrl('/service/submit'), {
+			const response = await fetch(toApiUrl('/service/submit'), {
 				method: 'POST',
 				body: formData
 			});
-			const { data, status } = await fromResponse(response);
-			console.log(data, status);
+            if (!response.ok) {
+             throw response
+             }
 		}}
 	/>
 </section>

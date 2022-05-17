@@ -3,7 +3,7 @@
         <h2>BEATS   BEATS   BEATS   BEATS   </h2>
         <h2>BEATS   BEATS   BEATS   BEATS   </h2>
     </div>
-	<a href="https://soundcloud.com/klean_profile " target="_blank">
+	<a href="https://soundcloud.com/kleanstudios?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing" target="_blank">
 		<img src="/soundcloud-logo-white.png" alt="Soundcloud logo" />
 	</a>
 </section>
