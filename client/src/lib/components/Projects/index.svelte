@@ -1,6 +1,3 @@
-<script context="module" lang="ts">
-</script>
-
 <script lang="ts">
 	import { toBackendUrl } from '$lib/api.js';
 	import { spring } from 'svelte/motion';
@@ -44,8 +41,11 @@
 				<img
 					class="image"
 					style="
+                      -webkit-transform:
+                        translate3d({$coords.x}px, {$coords.y}px, 0)
+                        rotate({$coords.rotation}deg);
                       transform:
-                        translate({$coords.x}px, {$coords.y}px)
+                        translate3d({$coords.x}px, {$coords.y}px, 0)
                         rotate({$coords.rotation}deg);
                       filter:
                       blur({$filter.blur}px)

@@ -30,6 +30,7 @@
 </script>
 
 <script lang="ts">
+    import Welcome from '$lib/components/Welcome.svelte'
 	import Projects from '$lib/components/Projects/index.svelte';
 	import {
 		Hero,
@@ -48,6 +49,7 @@
 	export let projects: Projects[] = [];
 </script>
 
+<Welcome />
 <Hero />
 <Services />
 <TheSpace />
