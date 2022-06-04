@@ -11,7 +11,8 @@
 			name: attributes.name,
 			/* description: project.description, */
 			image: attributes.image,
-			url: attributes.url
+			url: attributes.url,
+            order: attributes.order,
 			/* tags: project.tags.map(tag => ({ */
 			/*     id: tag.id.toString(), */
 			/*     name: tag.name, */
@@ -20,9 +21,9 @@
 		}));
 
 		return {
-			status: projects.status,
+            status: projects.status,
 			props: {
-				projects: projects.data,
+				projects: projects.data.sort((a, b) => b.order - a.order),
 				testimonials: getAttributes(testimonials.data)
 			}
 		};

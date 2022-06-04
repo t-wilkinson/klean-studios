@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Link from '$lib/components/Link.svelte';
 	const services = [
 		{
 			name: 'Beats',
@@ -34,6 +35,9 @@
          alt="Room with piano, speakers, etc."
          src="/IMG-4291.jpg"
          />
+     <div class="link">
+         <Link href="#service">Let's Create</Link>
+     </div>
 </section>
 
 
@@ -43,6 +47,7 @@
         grid-template:
             "text image" auto
             "services image" auto
+            "button button" auto
             / 1fr 1fr;
         justify-items: center;
         width: 100%;
@@ -59,6 +64,12 @@
             margin-bottom: 4rem;
 		}
 
+        .link {
+            margin-top: 4rem;
+            font-size: 2rem;
+            grid-area: button;
+        }
+
         @media (max-width: 800px) {
             padding: 0 2rem;
             margin: 4rem 0 8rem;
@@ -66,6 +77,7 @@
                 "image" 300px
                 "text" auto
                 "services" auto
+                "button" auto
                 / 1fr;
 
             h2 {

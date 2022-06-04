@@ -14,12 +14,12 @@
         },
         'sleepwalker-before': {
             label: 'Unmixed',
-            name: 'Sleep Walkers',
+            name: 'Sleepwalkers',
             file: '/audio/sleep-walkers-preview.wav'
         },
         'sleepwalker-after': {
             label: 'Mastered',
-            name: 'Sleep Walkers',
+            name: 'Sleepwalkers',
             file: '/audio/sleep-walkers-preview-master.wav',
         }
     }
@@ -155,49 +155,25 @@
         .mastering-comparison {
             padding: 0 2rem;
             h2 {
-                font-size: 4rem;
-            }
-            .track-name {
-                font-size: 1rem;
-            }
-
-            .track-preview {
-                button {
-                    padding: 0.5rem;
-                    font-size: 1.5rem;
-                }
-            }
-        }
-    }
-
-    @media (max-width: 700px) {
-        .mastering-comparison {
-            padding: 0 2rem;
-            h2 {
                 font-size: 3rem;
             }
-            .track-name {
-                font-size: 1rem;
-            }
-
-            .track-preview {
-                button {
-                    width: auto;
-                    height: auto;
-                    padding: 0.5rem;
-                    font-size: 1.5rem;
-                }
-            }
-        }
-    }
-
-    @media (max-width: 400px) {
-        .mastering-comparison {
 
             .track-preview {
                 display: flex;
                 flex-direction: column;
                 align-items: center;
+
+                .before {
+                    grid-area: before;
+                    background: linear-gradient(170deg, var(--c-pri), var(--before-color-end));
+                    filter: saturate(0.35);
+                }
+
+                .after {
+                    grid-area: after;
+                    background: linear-gradient(170deg, var(--after-color-end), #6b3bff);
+                    filter: saturate(0.35);
+                }
 
                 .track-name {
                     font-size: 1.5rem;
@@ -206,8 +182,12 @@
 
                 button {
                     width: 100%;
+                    height: auto;
+                    padding: 1rem 0.5rem;
+                    font-size: 1.5rem;
                 }
             }
         }
     }
+
 </style>

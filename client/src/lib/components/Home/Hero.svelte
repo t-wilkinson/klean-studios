@@ -6,7 +6,7 @@
 	<img class="img" src="/IMG-4279.jpg" alt="The studio" />
 	<div class="content">
 		<h1>KLEAN STUDIOS</h1>
-		<Link class="link" href="#service">Let's Create</Link>
+        <!-- <Link class="link" href="#service">Let's Create</Link> -->
 	</div>
 </section>
 
@@ -26,6 +26,10 @@
 		justify-items: center;
 		align-items: center;
         overflow: hidden;
+
+        h1 {
+            text-align: center;
+        }
 
 		.img {
 			position: absolute;

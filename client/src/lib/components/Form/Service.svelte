@@ -50,7 +50,7 @@
             <p>Looks like we're having technical difficulties!</p>
         </div>
     {:else}
-        <h2>Let's Get Started</h2>
+        <h2>Request a Service</h2>
         <div class="inputs">
             {#each [{ label: 'First Name', type: 'text', value: firstName }, { label: 'Last Name', value: lastName, type: 'text' }, { label: 'Email', type: 'email', value: email }, { label: 'Phone Number', value: phoneNumber, type: 'text' }, { label: 'Band Name', value: bandName, type: 'text' }] as input}
                 {@const name = labelToName(input.label)}

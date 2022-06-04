@@ -12,34 +12,24 @@ const timeline = gsap.timeline({
 
 onMount(async () => {
     /* const userAgent = (agent) => RegExp(agent, 'i').test(window.navigator.userAgent) */
-
     timeline
         .fromTo(
             'tspan',
-            { fill: '#1f222b', stroke: '#1f222b' },
-            { duration: 0, stroke: '#fff' },
+            { fill: '#1f222b' },
+            { duration: 0, fill: '#ffffff' },
             0
-        )
-        .fromTo(
-            'tspan',
-            { strokeDashoffset: '200', strokeDasharray: '200' },
-            {
-                strokeDashoffset: '0',
-                stagger: { each: 0.2, grid: [2, 7], from: 'start' },
-                duration: 0.6,
-            }
         )
         .fromTo(
             'tspan',
             { fill: '#1f222b' },
             {
-                fill: 'white',
+                fill: '#ffffff',
                 duration: 1,
                 stagger: { each: 0.15, grid: [2, 7], from: 'start' },
             },
             '0.6'
         )
-        .fromTo('.welcome-text', {opacity: 1}, { opacity: 0, duration: 0.5 })
+        .fromTo('.welcome-text', {opacity: 1}, { opacity: 0, display: 'none', duration: 0.5 })
 })
 
 </script>
@@ -72,14 +62,17 @@ onMount(async () => {
         position: absolute; top: 0;
         background: #1f222b;
         display: flex;
-        justify-items: center;
+        justify-content: center;
         align-items: center;
         padding: 1rem;
     }
 
     svg {
-        stroke-width: 0.2;
-        stroke: #1f222b;
+        width: 100%;
+        height: 100%;
+        max-width: var(--screen-lg);
+        stroke-width: 0;
+        /* fill: white; */
         fill: #1f222b;
     }
 </style>

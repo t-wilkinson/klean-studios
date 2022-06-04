@@ -25,6 +25,10 @@
       "allowedTypes": [
         "images"
       ]
+    },
+    "order": {
+      "type": "integer",
+      "min": 0
     }
   }
 }

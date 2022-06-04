@@ -24,7 +24,7 @@ module.exports = ({ env }) => {
         port: env.int("DATABASE_PORT", 5432),
         databsae: env("DATABASE_NAME", "strapi"),
         user: env("DATABASE_USER", "strapi"),
-        password: env("DATABASE_SCHEMA", "strapi"),
+        password: env("DATABASE_PASSWORD", "strapi"),
       },
       useNullAsDefault: true,
     }
