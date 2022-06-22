@@ -62,7 +62,7 @@
         </div>
 
         <div class="checkbox">
-            {#each [{ label: 'Recording', value: recording }, { label: 'Mixing', value: mixing }, { label: 'Mastering', value: mastering }] as input}
+            {#each [{ label: 'Recording ($15 per hour)', value: recording }, { label: 'Mixing ($30 - $100 workload based)', value: mixing }, { label: 'Mastering ($75 per track)', value: mastering }] as input}
                 {@const name = labelToName(input.label)}
                 <label for={name}>
                     <input id={name} {name} type="checkbox" bind:checked={input.value} />
@@ -83,6 +83,11 @@
         </div>
 
     <ul>
+        <h4 class="label">Other info</h4>
+        <li>
+            <small>*</small>
+An additional $15 may be included in cost as a set up fee in band setting occurrences or chamber/orchestral groups.
+        </li>
         <li>
             <small>*</small>
 We appreciate you coming to Klean Studios and becoming part of our growing community. So when bundling services you can expect discounted rates anywhere from 15% to 50% off.
@@ -162,6 +167,13 @@ After scheduling with us once, you will always have direct contact to a producer
 	}
 
     ul {
+        .label {
+            font-size: 1.75rem;
+            font-weight: bold;
+            padding-bottom: 1rem;
+            font-family: var(--font-secondary);
+        }
+
         list-style: none;
         padding: 0;
         font-size: 1.10rem;

@@ -7,7 +7,7 @@
     /* }) */
 </script>
 
-<section class="beats">
+<section id="beats" class="beats">
     <div class="beats-wrapper">
          {#if safariAgent}
              <div class="no-marquee">

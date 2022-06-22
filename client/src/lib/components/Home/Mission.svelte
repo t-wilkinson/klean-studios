@@ -1,4 +1,4 @@
-<section class="mission">
+<section id="mission" class="mission">
 	<div class="container">
 		<img class="image" src="IMG-4290.jpg" alt="Mission" />
 		<div class="text">

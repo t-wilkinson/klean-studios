@@ -2,10 +2,10 @@
 	import Link from '$lib/components/Link.svelte';
 </script>
 
-<section class="hero">
+<section id="welcome" class="hero">
 	<img class="img" src="/IMG-4279.jpg" alt="The studio" />
 	<div class="content">
-		<h1>KLEAN STUDIOS</h1>
+		<h1>Welcome to Our Website</h1>
         <!-- <Link class="link" href="#service">Let's Create</Link> -->
 	</div>
 </section>
@@ -28,6 +28,7 @@
         overflow: hidden;
 
         h1 {
+            font-size: 5rem;
             text-align: center;
         }
 
