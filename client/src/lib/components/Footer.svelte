@@ -10,7 +10,7 @@
                 </g>
                 </g>
             </svg>
-            <h3>Klean Studios</h3>
+            <h3>Klean Studios LLC</h3>
         </div>
 
 		<nav class="social-media">

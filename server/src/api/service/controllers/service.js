@@ -67,6 +67,21 @@ module.exports = {
           subject: "Service submission", // Subject line
           text: JSON.stringify(modifyKeys(body, (k) => toTitleCase(k.replace(/-/g, ' '))), null, 4), // plain text body
         })
+
+        if (data.isGroup) {
+          await sendMail({
+            from: '"Klean Studios" <maxwellklim03@gmail.com>',
+            to: body.email,
+            subject: 'Klean Studios Service Request',
+            text: `
+Thank you for your submission!
+
+We understand you will have a group of more than one person at the session. Please fill out the below form to help the process go as smooth as possible:
+
+https://docs.google.com/forms/d/e/1FAIpQLSc-nD5oPT7vSzqP1Es7P9A_ibOKZQ8vsY8SGIB9chlJGeBqeg/viewform?usp=sf_link
+`
+          })
+        }
       }
 
       ctx.body = 'ok';
