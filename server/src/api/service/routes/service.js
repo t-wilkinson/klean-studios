@@ -6,6 +6,8 @@ module.exports = {
       method: 'POST',
       path: '/service/submit',
       handler: 'service.submit',
+      config: {
+      }
     }
   ],
   // config: {

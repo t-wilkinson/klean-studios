@@ -69,7 +69,7 @@
 		</div>
 
 		<div class="checkbox">
-			{#each [{ label: 'Recording ($15 per hour)', value: recording }, { label: 'Mixing ($30 - $100 workload based)', value: mixing }, { label: 'Mastering ($75 per track)', value: mastering }] as input}
+			{#each [{ label: 'Recording ($25 per hour)', value: recording }, { label: 'Mixing ($35 - $125 workload based)', value: mixing }, { label: 'Mastering ($75 per track)', value: mastering }] as input}
 				{@const name = labelToName(input.label)}
 				<label for={name}>
 					<input id={name} {name} type="checkbox" bind:checked={input.value} />

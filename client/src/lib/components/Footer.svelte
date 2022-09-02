@@ -15,7 +15,7 @@
 
 		<nav class="social-media">
 			follow us on
-			<a href="https://www.instagram.com/klean_studios/">instagram</a>
+			<a href="https://www.instagram.com/klean_studios_llc/">instagram</a>
 		</nav>
 		<ul class="contact">
 			<li>(540) 816-2061</li>

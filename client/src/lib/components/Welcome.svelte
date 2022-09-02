@@ -15,13 +15,13 @@ onMount(async () => {
     timeline
         .fromTo(
             'tspan',
-            { fill: '#1f222b' },
+            { fill: '#1e1f22' },
             { duration: 0, fill: '#ffffff' },
             0
         )
         .fromTo(
             'tspan',
-            { fill: '#1f222b' },
+            { fill: '#1e1f22' },
             {
                 fill: '#ffffff',
                 duration: 1,
@@ -60,7 +60,7 @@ onMount(async () => {
         left: 0; right: 0;
         z-index: 10;
         position: absolute; top: 0;
-        background: #1f222b;
+        background: #1e1f22;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -73,6 +73,6 @@ onMount(async () => {
         max-width: var(--screen-lg);
         stroke-width: 0;
         /* fill: white; */
-        fill: #1f222b;
+        fill: #1e1f22;
     }
 </style>

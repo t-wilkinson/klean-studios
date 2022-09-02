@@ -137,6 +137,7 @@
 			height: var(--height);
 			left: calc(-10rem);
 			top: calc(-10rem);
+            object-fit: contain;
 		}
 
 		.project {

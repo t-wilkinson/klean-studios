@@ -63,14 +63,14 @@ module.exports = {
           to:
           process.env.NODE_ENV === 'development'
           ? "winston.trey.wilkinson@gmail.com" // list of receivers
-          : "maxwellklim03@gmail.com, winston.trey.wilkinson@gmail.com", // list of receivers
+          : "studio.klean@gmail.com, winston.trey.wilkinson@gmail.com", // list of receivers
           subject: "Service submission", // Subject line
           text: JSON.stringify(modifyKeys(body, (k) => toTitleCase(k.replace(/-/g, ' '))), null, 4), // plain text body
         })
 
         if (data.isGroup) {
           await sendMail({
-            from: '"Klean Studios" <maxwellklim03@gmail.com>',
+            from: '"Klean Studios" <studio.klean@gmail.com>',
             to: body.email,
             subject: 'Klean Studios Service Request',
             text: `
@@ -78,7 +78,7 @@ Thank you for your submission!
 
 We understand you will have a group of more than one person at the session. Please fill out the below form to help the process go as smooth as possible:
 
-https://docs.google.com/forms/d/e/1FAIpQLSc-nD5oPT7vSzqP1Es7P9A_ibOKZQ8vsY8SGIB9chlJGeBqeg/viewform?usp=sf_link
+https://docs.google.com/forms/d/1H6BAv-5MXX-Zz_VHLwADvAH7Lv1M08NHxEQjL3YRr-k/viewform?edit_requested=true
 `
           })
         }

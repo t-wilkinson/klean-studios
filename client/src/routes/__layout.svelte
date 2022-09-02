@@ -46,7 +46,7 @@
 
     header {
         padding: 1rem;
-        background: #1f222bc0;
+        background: #1e1f22c0;
         z-index: 1;
         position: absolute;
         display: flex;
@@ -63,7 +63,7 @@
 	body {
 		margin: 0;
 		padding: 0;
-		--c-bg: #1f222b;
+		--c-bg: #1e1f22;
 		--c-gray: #494f60;
 		--c-pri: #b71ac1;
 		--c-sec: #f5ff3b;
@@ -102,7 +102,7 @@
 		align-items: center;
 		justify-content: center;
 		width: 100%;
-		background: #1f222b;
+		background: #1e1f22;
 		color: white;
 		padding: 0;
 		margin: 0;
